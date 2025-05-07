@@ -23,7 +23,7 @@ app.get('/oxygen', async (_req, res) => {
 
 app.get('/oxygen/search', async (req, res) => {
   try {
-    const { date } = req.query; // 2025-05-05T10:30:00
+    const { date } = req.query; // 2025-05-06T00:00:00Z
     if (!date) return res.status(400).json({ error: 'Date is required' });
 
     const start = new Date(date);
