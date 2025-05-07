@@ -4,10 +4,3 @@ Esta API forma parte del sistema Ballerina, un proyecto IoT enfocado en el monit
 ## Scripts disponibles
 - `npm start`: Inicia el servidor principal del proyecto.
 - `npm run seed`: Alimenta la base de datos con 10 documentos de prueba.
-
-## Archivo `.env`
-Asegúrate de tener un archivo `.env` en la raíz del proyecto con la siguiente configuración:
-
-```env
-MONGODB_URI=mongodb://root:password@localhost:27017
-```
