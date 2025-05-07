@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { filterByDateAndMetric, Sensors } from '../data/db.js';
 import { metrics } from '../utils/metrics.js';
-// import { client, publishToTopic } from '../network/mqtt_handler.js';
+import { client, publishToTopic } from '../network/mqtt_handler.js';
 
 dotenv.config();
 
