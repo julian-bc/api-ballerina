@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "seed": "node ./seed.js",
-    "start": "node ./index.js"
+    "seed": "node ./src/data/seed.js",
+    "start": "node ./src/app/index.js"
   },
   "keywords": [],
   "author": "",
