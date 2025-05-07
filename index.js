@@ -11,7 +11,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-app.get('/oxygen', async (_req, res) => {
+app.get('/lorawan/ox', async (_req, res) => {
   try {
     const result = await Oxygen.find({});
     res.json(result);
@@ -21,7 +21,7 @@ app.get('/oxygen', async (_req, res) => {
   }
 })
 
-app.get('/oxygen/search', async (req, res) => {
+app.get('/lorawan/ox/search', async (req, res) => {
   try {
     const { date } = req.query; // 2025-05-06T00:00:00Z
     if (!date) return res.status(400).json({ error: 'Date is required' });
