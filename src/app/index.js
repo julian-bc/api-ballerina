@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { filterByDateAndMetric, Sensors } from '../data/db.js';
-import { metrics } from '../utils/metrics.js';
+import { Oxygen } from '../data/db.js';
 import { client, publishToTopic } from '../network/mqtt_handler.js';
+import { filterByDate } from '../data/queries.js';
+import { calculatePastDate } from '../utils/calculateDate.js';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ app.listen(PORT, () => {
 
 app.get('/lorawan/ox', async (_req, res) => {
   try {
-    const result = await Sensors.find({metric: metrics.OXYGEN});
+    const result = await Oxygen.find();
     res.json(result);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -25,10 +26,11 @@ app.get('/lorawan/ox', async (_req, res) => {
 
 app.get('/lorawan/ox/filter', async (req, res) => {
   try {
-    const { date } = req.query; // 2025-05-06T00:00:00Z
+    const { date } = req.query;
+
     if (!date) return res.status(400).json({ error: 'Date is required' });
     
-    const data = await filterByDateAndMetric(date, metrics.OXYGEN)
+    const data = await filterByDate(calculatePastDate(date));
 
     res.json(data);
   } catch (error) {
@@ -38,15 +40,15 @@ app.get('/lorawan/ox/filter', async (req, res) => {
 });
 
 client.subscribe('app/query', async (error, message) => {
-  if (!error) { // 2025-05-06T00:00:00Z
+  if (!error) {
     try {
-      const { date , metric } = JSON.parse(message.toString());
+      const date = calculatePastDate(message.toString());
 
-      if (!date || !metric) {
-        console.error('Invalid payload: date or metric missing')
+      if (!date) {
+        console.error('date missing')
       }
       
-      const data = await filterByDateAndMetric(date, metric);
+      const data = await filterByDate(date);
 
       publishToTopic('app/reponse', JSON.stringify(data));
     } catch (error) {
