@@ -26,11 +26,11 @@ app.get('/lorawan/ox', async (_req, res) => {
 
 app.get('/lorawan/ox/filter', async (req, res) => {
   try {
-    const { date } = calculatePastDate(req.query);
+    const { date } = req.query;
 
     if (!date) return res.status(400).json({ error: 'Date is required' });
     
-    const data = await filterByDate(date);
+    const data = await filterByDate(calculatePastDate(date));
 
     res.json(data);
   } catch (error) {
