@@ -42,7 +42,7 @@ app.get('/lorawan/ox/filter', async (req, res) => {
 client.subscribe('app/query', async (error, message) => {
   if (!error) {
     try {
-      const date = calculatePastDate(message);
+      const date = calculatePastDate(message.toString());
 
       if (!date) {
         console.error('date missing')
