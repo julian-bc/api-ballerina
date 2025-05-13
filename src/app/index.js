@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { Oxygen } from '../data/db.js';
 import { client, publishToTopic } from '../network/mqtt_handler.js';
 import { filterByDate } from '../data/queries.js';
+import { calculatePastDate } from '../utils/calculateDate.js';
 
 dotenv.config();
 
@@ -25,7 +26,8 @@ app.get('/lorawan/ox', async (_req, res) => {
 
 app.get('/lorawan/ox/filter', async (req, res) => {
   try {
-    const { date } = req.query; // 2025-05-06T00:00:00Z
+    const { date } = calculatePastDate(req.query);
+
     if (!date) return res.status(400).json({ error: 'Date is required' });
     
     const data = await filterByDate(date);
@@ -38,9 +40,9 @@ app.get('/lorawan/ox/filter', async (req, res) => {
 });
 
 client.subscribe('app/query', async (error, message) => {
-  if (!error) { // 2025-05-06T00:00:00Z
+  if (!error) {
     try {
-      const { date } = JSON.parse(message.toString());
+      const date = calculatePastDate(message);
 
       if (!date) {
         console.error('date missing')
