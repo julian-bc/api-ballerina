@@ -16,4 +16,23 @@ const oxygenSchema = new mongoose.Schema({
   }
 }, { versionKey: false });
 
-export const Oxygen = mongoose.model("Oxygen", oxygenSchema);
+const temperatureSchema = new mongoose.Schema({
+  createdAt: {
+    type: Date,
+    default: () => new Date().now().toISOString()
+  },
+  value: {
+    type: Number,
+    required: true
+  }
+}, { versionKey: false });
+
+const Temperature = mongoose.model("Temperature", temperatureSchema);
+const Oxygen = mongoose.model("Oxygen", oxygenSchema);
+
+export const collections = {
+  "oxygen": Oxygen,
+  "temperature": Temperature
+};
+
+export const sensorTypes = Object.keys(collections);

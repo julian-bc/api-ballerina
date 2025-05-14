@@ -1,10 +1,8 @@
-import { Oxygen } from "./db.js";
-
-export const filterByDate = (date) => {
+export const filterByDate = (date, schema) => {
   const start = new Date(date);
   const end = new Date();
   
-  return Oxygen.find({
+  return schema.find({
     createdAt: { $gte: start, $lte: end }
   });
 }
