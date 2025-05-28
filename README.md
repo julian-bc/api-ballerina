@@ -1,6 +1,7 @@
-# Api Ballerina 📡🐟
-Esta API forma parte del sistema Ballerina, un proyecto IoT enfocado en el monitoreo inteligente de actividades piscícolas. La API permite registrar y consultar datos de oxígeno disuelto recolectados en tiempo real desde sensores en los estanques.
+# Backend Ballerina 📡🐟
+Backend del sistema Ballerina, un proyecto IoT para el monitoreo inteligente de actividades piscícolas.
+Este servicio permite registrar y consultar datos en tiempo real sobre el oxígeno disuelto en estanques, recolectados mediante sensores conectados.
 
 ## Scripts disponibles 🚀
 - `npm start`: Inicia el servidor principal del proyecto.
-- `npm run seed`: Alimenta la base de datos con 20 documentos de prueba.
+- `npm run seed`: Carga la base de datos con datos de prueba para facilitar el desarrollo y las pruebas.

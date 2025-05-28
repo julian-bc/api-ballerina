@@ -3,6 +3,6 @@ export const filterByDate = (date, schema) => {
   const end = new Date();
   
   return schema.find({
-    createdAt: { $gte: start, $lte: end }
+    date: { $gte: start, $lte: end }
   });
 }

@@ -6,7 +6,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
 
 const oxygenSchema = new mongoose.Schema({
-  createdAt: { 
+  date: { 
     type: Date, 
     default: () => new Date().now().toISOString() 
   },
@@ -17,7 +17,7 @@ const oxygenSchema = new mongoose.Schema({
 }, { versionKey: false });
 
 const temperatureSchema = new mongoose.Schema({
-  createdAt: {
+  date: {
     type: Date,
     default: () => new Date().now().toISOString()
   },

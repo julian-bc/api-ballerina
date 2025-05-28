@@ -1,5 +1,5 @@
 {
-  "name": "api-iot",
+  "name": "backend-ballerina",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -13,7 +13,6 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
     "mongoose": "^8.14.1",
     "mqtt": "^5.12.1"
   }
