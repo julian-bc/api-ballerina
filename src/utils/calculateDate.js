@@ -10,7 +10,7 @@ export function calculatePastDate(dateString) {
   const timeMatch = dateString.match(rgxTime);
 
   if (!numberMatch || !timeMatch) {
-    console.error("[ERROR] Invalid format.");
+    console.error("[❌ ERROR] Invalid format.");
     return null;
   }
   const number = parseInt(numberMatch[0], 10);
@@ -25,7 +25,7 @@ export function calculatePastDate(dateString) {
   } else if (time.includes("año")) {
     newDate.setFullYear(newDate.getFullYear() - number);
   } else {
-    console.error("[ERROR] Unrecognized time unit.");
+    console.error("[❌ ERROR] Unrecognized time unit.");
     return null;
   }
   return newDate.toISOString();

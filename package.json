@@ -4,7 +4,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "seed": "node ./src/data/seed.js",
     "start": "node ./src/app/index.js"
   },
   "keywords": [],

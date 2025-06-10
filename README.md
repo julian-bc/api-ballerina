@@ -1,7 +1,5 @@
-# Backend Ballerina 📡🐟
-Backend del sistema Ballerina, un proyecto IoT para el monitoreo inteligente de actividades piscícolas.
-Este servicio permite registrar y consultar datos en tiempo real sobre el oxígeno disuelto en estanques, recolectados mediante sensores conectados.
+# Backend Ballerina 🌱🐟
+Backend Ballerina is a system designed to work in collaboration with Ballerina Software. It provides real-time data consultation on oxygen levels in ponds, collected through intelligent sensors. Our software will promote new solutions for integrating automation into agricultural environments. With this technology, you can streamline all your processes, enhance production statistics, and free up time for business growth.
 
-## Scripts disponibles 🚀
-- `npm start`: Inicia el servidor principal del proyecto.
-- `npm run seed`: Carga la base de datos con datos de prueba para facilitar el desarrollo y las pruebas.
+## Scripts availables 🚀
+- `npm start`: Run the server.
